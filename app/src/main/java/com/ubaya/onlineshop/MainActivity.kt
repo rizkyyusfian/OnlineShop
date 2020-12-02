@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     //Array list fragment
     val fragments:ArrayList<Fragment> = ArrayList()
-    var testsaja = "edo biadab"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +29,17 @@ class LoginActivity : AppCompatActivity() {
                 Request.Method.POST, url,
                 {
                     Log.d("apiresult", it)
-                    Toast.makeText(this, "Berhasil Login", Toast.LENGTH_LONG).show()
-                    var intentLogin = Intent(this, MainActivity::class.java)
-                    startActivity(intentLogin)
+                    val obj = JSONObject(it)
+                    if(obj.getString("result") == "OK") {
+                        Toast.makeText(this, "Berhasil Masuk", Toast.LENGTH_LONG).show()
+                        var intentLogin = Intent(this, MainActivity::class.java)
+                        startActivity(intentLogin)
+                    } else if (obj.getString("result") == "ERROR_EMAILPASS") {
+                        Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()
+                    } else if (obj.getString("result") == "ERROR_AKUN") {
+                        Toast.makeText(this, "Akun Belum Terdaftar", Toast.LENGTH_LONG).show()
+                    }
+
                 },
                 {
                     Log.d("apiresult", it.message.toString())

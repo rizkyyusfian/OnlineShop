@@ -30,7 +30,16 @@ class SignUpActivity : AppCompatActivity() {
                 val stringRequest = object: StringRequest(Request.Method.POST, url,
                     {
                         Log.d("apiresult", it)
-                        Toast.makeText(this, "Akun Berhasil Didaftarkan", Toast.LENGTH_LONG).show()
+                        val obj = JSONObject(it)
+                        if(obj.getString("result") == "OK") {
+                            Toast.makeText(this, "Akun Berhasil Didaftarkan", Toast.LENGTH_LONG).show()
+                            var intentLogin = Intent(this, MainActivity::class.java)
+                            startActivity(intentLogin)
+                        } else if (obj.getString("result") == "ERROR_EMAIL") {
+                            Toast.makeText(this, "Email Sudah Pernah Didaftarkan", Toast.LENGTH_LONG).show()
+                        } else if (obj.getString("result") == "ERROR_INSERT") {
+                            Toast.makeText(this, "Gagal Daftar, Coba Lagi", Toast.LENGTH_LONG).show()
+                        }
                     },
                     {
                         Log.d("apiresult", it.message.toString())

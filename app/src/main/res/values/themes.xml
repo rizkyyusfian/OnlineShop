@@ -31,4 +31,18 @@
         <item name="fontFamily">@font/karla</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <!--BUTTON-->
+    <style name="primaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/secondaryColor</item>
+        <item name="fontFamily">@font/karla</item>
+    </style>
+
+    <style name="secondaryButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="fontFamily">@font/karla</item>
+    </style>
+
+    <style name="otherButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="fontFamily">@font/karla</item>
+    </style>
 </resources>

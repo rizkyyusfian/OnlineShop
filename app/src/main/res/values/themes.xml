@@ -35,6 +35,7 @@
     <!--BUTTON-->
     <style name="primaryButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/secondaryColor</item>
+        <item name="android:textColor">@color/secondaryTextColor</item>
         <item name="fontFamily">@font/karla</item>
     </style>
 

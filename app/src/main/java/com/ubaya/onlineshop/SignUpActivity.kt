@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -22,34 +23,28 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        val q = Volley.newRequestQueue(this)
-//        val url = "http://ubaya.prototipe.net/nmp160418112/signup.php"
-//        var stringRequest = StringRequest(Request.Method.POST, url,
-//            {
-//                Log.d("apiresult", it)
-//                val obj = JSONObject(it)
-//                if(obj.getString("result") == "OK")
-//                {
-//                    val data = obj.getJSONArray("data")
-//                    for(i in 0 until data.length()) {
-//                        val playObj = data.getJSONObject(i)
-//                        val playlist = Playlist(
-//                            playObj.getInt("id"),
-//                            playObj.getString("title"),
-//                            playObj.getString("subtitle"),
-//                            playObj.getString("description"),
-//                            playObj.getString("image_url"),
-//                            playObj.getInt("num_likes")
-//                        )
-//                        playlists.add(playlist)
-//                    }
-//                    updateList()
-//                    Log.d("cekisiarray", playlists.toString())
-//                }
-//            },
-//            {
-//                Log.e("apiresult", it.message.toString())
-//            })
-//        q.add(stringRequest)
+        btnSignup.setOnClickListener {
+            if (txtSignupPassword.text == txtSignupCekPassword.text) {
+                val q = Volley.newRequestQueue(this)
+                val url = "http://ubaya.prototipe.net/nmp160418112/signup.php"
+                val stringRequest = object: StringRequest(Request.Method.POST, url,
+                    {
+                        Log.d("apiresult", it)
+                    },
+                    {
+                        Log.d("apiresult", it.message.toString())
+                    }
+                ) {
+                    override fun getParams(): MutableMap<String, String> {
+                        var params = HashMap<String, String>()
+                        params.put("username", txtSignupUsername.text.toString())
+                        params.put("email", txtSignupEmail.text.toString())
+                        params.put("password", txtSignupPassword.text.toString())
+                        return params
+                    }
+                }
+                q.add(stringRequest)
+            }
+        }
     }
 }

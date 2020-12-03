@@ -24,12 +24,13 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         btnSignup.setOnClickListener {
-            if (txtSignupPassword.text == txtSignupCekPassword.text) {
+            if (txtSignupPassword.text.toString() == txtSignupCekPassword.text.toString()) {
                 val q = Volley.newRequestQueue(this)
                 val url = "http://ubaya.prototipe.net/nmp160418112/signup.php"
                 val stringRequest = object: StringRequest(Request.Method.POST, url,
                     {
                         Log.d("apiresult", it)
+                        Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
                     },
                     {
                         Log.d("apiresult", it.message.toString())
@@ -44,6 +45,8 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }
                 q.add(stringRequest)
+            } else {
+                Toast.makeText(this, "Password Tidak Sama", Toast.LENGTH_LONG).show()
             }
         }
     }

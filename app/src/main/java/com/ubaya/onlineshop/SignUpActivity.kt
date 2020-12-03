@@ -30,7 +30,7 @@ class SignUpActivity : AppCompatActivity() {
                 val stringRequest = object: StringRequest(Request.Method.POST, url,
                     {
                         Log.d("apiresult", it)
-                        Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Akun Berhasil Didaftarkan", Toast.LENGTH_LONG).show()
                     },
                     {
                         Log.d("apiresult", it.message.toString())

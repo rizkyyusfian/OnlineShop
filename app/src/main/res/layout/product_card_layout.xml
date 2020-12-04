@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgItem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
@@ -32,7 +32,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtNamaItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -40,10 +40,10 @@
                 android:text="Product"
                 android:textAppearance="@style/header"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imgItem" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txtHarga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -51,10 +51,10 @@
                 android:text="Harga"
                 android:textAppearance="@style/subheader"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaItem" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txtStok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -62,10 +62,10 @@
                 android:text="Stok"
                 android:textAppearance="@style/subheader"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintTop_toBottomOf="@+id/txtHarga" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/txtDeskripsi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -73,10 +73,10 @@
                 android:text="Description"
                 android:textAppearance="@style/subheader"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toBottomOf="@+id/txtStok" />
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnAddToCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -85,7 +85,7 @@
                 android:textAppearance="@style/subheader"
                 app:icon="@drawable/ic_baseline_shopping_cart_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDeskripsi" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

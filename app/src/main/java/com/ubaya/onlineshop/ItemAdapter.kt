@@ -27,9 +27,9 @@ class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.I
         Picasso.get().load(url).into(holder.v.imgItem) //GAMBAR
 
         holder.v.txtNamaItem.text = items[position].nama
-        holder.v.txtHarga.setText( "Harga: " + items[position].harga.toString())
-        holder.v.txtStok.setText(items[position].stok.toString())
-        holder.v.txtDeskripsi.text = items[position].deskripsi
-        holder.v.txtNamaKategori.text = items[position].namaKategori
+        holder.v.txtHarga.setText("HARGA: " + items[position].harga.toString())
+        holder.v.txtStok.setText("STOK: " + items[position].stok.toString())
+        holder.v.txtDeskripsi.text = "DESKRIPSI: " + items[position].deskripsi
+        holder.v.txtNamaKategori.text = "Kategori: " + items[position].namaKategori
     }
 }

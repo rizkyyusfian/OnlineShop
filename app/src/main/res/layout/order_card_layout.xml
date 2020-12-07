@@ -12,8 +12,6 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +22,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imgItem"
+                android:id="@+id/imgOrder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
@@ -34,71 +32,59 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/txtNamaItem"
+                android:id="@+id/txtIdItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:text="Product"
-                android:textAppearance="@style/header"
+                android:layout_marginTop="24dp"
+                android:text="ID ITEM"
+                android:textAppearance="@style/body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgItem" />
+                app:layout_constraintTop_toBottomOf="@+id/imgOrder" />
 
             <TextView
-                android:id="@+id/txtHarga"
+                android:id="@+id/txtIdUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="Harga"
-                android:textAppearance="@style/subheader"
+                android:text="ID USER"
+                android:textAppearance="@style/body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaItem" />
+                app:layout_constraintTop_toBottomOf="@+id/txtIdItem" />
 
             <TextView
-                android:id="@+id/txtStok"
+                android:id="@+id/txtTanggalOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="Stok"
-                android:textAppearance="@style/subheader"
+                android:text="TANGGAL ORDER"
+                android:textAppearance="@style/body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtHarga" />
+                app:layout_constraintTop_toBottomOf="@+id/txtIdUser" />
 
             <TextView
-                android:id="@+id/txtDeskripsi"
+                android:id="@+id/txtQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="Description"
-                android:textAppearance="@style/subheader"
+                android:text="QUANTITY"
+                android:textAppearance="@style/body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaKategori" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTanggalOrder" />
 
             <TextView
-                android:id="@+id/txtNamaKategori"
+                android:id="@+id/txtSubTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="Nama Kategori"
-                android:textAppearance="@style/subheader"
+                android:text="SUB TOTAL"
+                android:textAppearance="@style/body"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtStok" />
-
-            <Button
-                android:id="@+id/btnAddToCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp"
-                android:text="add to cart"
-                android:textAppearance="@style/subheader"
-                app:icon="@drawable/ic_baseline_shopping_cart_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtDeskripsi" />
+                app:layout_constraintTop_toBottomOf="@+id/txtQuantity" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

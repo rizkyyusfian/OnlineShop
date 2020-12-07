@@ -1,4 +1,5 @@
 package com.ubaya.onlineshop
 
-data class Item(val id:Int, val nama:String, val harga:Int, val deskripsi:String, val stok:Int, val gambar:String) {
+data class Item(val id:Int, val nama:String, val harga:Int, val deskripsi:String, val stok:Int, val gambar:String, val idKategori:Int, val namaKategori:String) {
+
 }

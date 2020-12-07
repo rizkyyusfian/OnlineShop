@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_card_layout.view.*
 
 class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
-
     class ItemViewHolder(val v: View) : RecyclerView.ViewHolder(v){
 
     }
@@ -23,9 +23,13 @@ class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.I
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val url = items[position].gambar //GAMBAR
+        Picasso.get().load(url).into(holder.v.imgItem) //GAMBAR
+
         holder.v.txtNamaItem.text = items[position].nama
-        holder.v.txtHarga.setText(items[position].harga.toString())
+        holder.v.txtHarga.setText( "Harga: " + items[position].harga.toString())
         holder.v.txtStok.setText(items[position].stok.toString())
         holder.v.txtDeskripsi.text = items[position].deskripsi
+        holder.v.txtNamaKategori.text = items[position].namaKategori
     }
 }

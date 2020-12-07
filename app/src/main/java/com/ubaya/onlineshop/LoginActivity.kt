@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.json.JSONObject
@@ -38,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()
                     } else if (obj.getString("result") == "ERROR_AKUN") {
                         Toast.makeText(this, "Akun Belum Terdaftar", Toast.LENGTH_LONG).show()
+//                        Snackbar.make(this, "Join Succed", Snackbar.LENGTH_LONG).show()
                     }
 
                 },

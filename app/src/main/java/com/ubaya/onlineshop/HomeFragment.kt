@@ -38,42 +38,43 @@ class HomeFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
 
-            val q = Volley.newRequestQueue(activity)
-            val url = "http://ubaya.prototipe.net/nmp160418112/item.php"
-            var stringRequest = StringRequest(
-                Request.Method.POST, url,
-                Response.Listener<String> {
-                    Log.d("apiresult", it)
-                    val obj = JSONObject(it)
-                    if(obj.getString("result") == "OK") {
-                        val data = obj.getJSONArray("data")
-                        for(i in 0 until data.length()) {
-                            val playObj = data.getJSONObject(i)
-                            val item = Item(
-                                playObj.getInt("id"),
-                                playObj.getString("nama"),
-                                playObj.getInt("harga"),
-                                playObj.getString("deskripsi"),
-                                playObj.getInt("stok"),
-                                playObj.getString("gambar")
-                            )
-                            items.add(item)
-                        }
-                        updateList()
-                        Log.d("cekisiarray", items.toString())
-                    }
-                },
-                Response.ErrorListener {
-                    Log.e("apiresult", it.message.toString())
-                })
-            q.add(stringRequest)
         }
     }
 
     override fun onResume() {
         super.onResume()
 
-
+        val q = Volley.newRequestQueue(activity)
+        val url = "http://ubaya.prototipe.net/nmp160418112/item.php"
+        var stringRequest = StringRequest(
+            Request.Method.POST, url,
+            {
+                Log.d("apiresult", it)
+                val obj = JSONObject(it)
+                if(obj.getString("result") == "OK") {
+                    val data = obj.getJSONArray("data")
+                    for(i in 0 until data.length()) {
+                        val playObj = data.getJSONObject(i)
+                        val item = Item(
+                            playObj.getInt("id"),
+                            playObj.getString("nama"),
+                            playObj.getInt("harga"),
+                            playObj.getString("deskripsi"),
+                            playObj.getInt("stok"),
+                            playObj.getString("gambar"),
+                            playObj.getInt("idkategori"),
+                            playObj.getString("namakategori")
+                        )
+                        items.add(item)
+                    }
+                    updateList()
+                    Log.d("apiresult", items.toString())
+                }
+            },
+            {
+                Log.e("apiresult", it.message.toString())
+            })
+        q.add(stringRequest)
     }
 
     override fun onCreateView(
@@ -83,7 +84,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false)
         return v
-
     }
 
     fun updateList() {

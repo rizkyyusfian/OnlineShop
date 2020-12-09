@@ -1,9 +1,12 @@
 package com.ubaya.onlineshop
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_card_layout.view.*
 
@@ -13,8 +16,7 @@ class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.I
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        var v = inflater.inflate(R.layout.product_card_layout, parent,false)
+        var v = LayoutInflater.from(parent.context).inflate(R.layout.product_card_layout, parent,false)
         return ItemViewHolder(v)
     }
 
@@ -26,10 +28,18 @@ class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.I
         val url = items[position].gambar //GAMBAR
         Picasso.get().load(url).into(holder.v.imgItem) //GAMBAR
 
-        holder.v.txtNamaItem.text = items[position].nama
-        holder.v.txtHarga.setText("HARGA: " + items[position].harga.toString())
-        holder.v.txtStok.setText("STOK: " + items[position].stok.toString())
-        holder.v.txtDeskripsi.text = "DESKRIPSI: " + items[position].deskripsi
-        holder.v.txtNamaKategori.text = "Kategori: " + items[position].namaKategori
+        with(holder.v) {
+            txtNamaItem.text = items[position].nama
+            txtHarga.setText("HARGA: " + items[position].harga.toString())
+            txtStok.setText("STOK: " + items[position].stok.toString())
+            txtDeskripsi.text = "DESKRIPSI: " + items[position].deskripsi
+            txtNamaKategori.text = "Kategori: " + items[position].namaKategori
+
+            cardViewDetail.setOnClickListener {
+                var intent = Intent(context, ItemDetailActivity::class.java)
+                intent.putExtra("ITEM_ID", items[position].id)
+                context.startActivity(intent)
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_item_detail.*
+import kotlinx.android.synthetic.main.product_card_layout.view.*
 import org.json.JSONObject
 
 class ItemDetailActivity : AppCompatActivity() {
@@ -18,25 +19,25 @@ class ItemDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item_detail)
 
         val id = intent.getIntExtra("ITEM_ID", 0)
-        val webhost = "http://ubaya.prototipe.net/s160418112/"
+        val webhost = "http://ubaya.prototipe.net/nmp160418112/"
         var q = Volley.newRequestQueue(this)
         var url = webhost + "getitemdetail.php"
         var stringRequest = StringRequest(
-            Request.Method.POST, url, Response.Listener {
+            Request.Method.POST, url, {
                 Log.d("apiresult", it)
                 var obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
                     val data = obj.getJSONArray("data")
 
                     var det = data.getJSONObject(0)
-                    Picasso.get().load(webhost + "gambar/" + det.getString("gambar")).into(imgGambarProduk)
+                    Picasso.get().load(det.getString("gambar")).into(imgGambarProduk)
                     txtKat.text = det.getString("namakategori")
                     txtNamaProduk.text = det.getString("nama")
                     txtHargaProduk.text = "Rp " + det.getInt("harga")
                     txtStok.text = det.getInt("stok").toString()
                     txtDeskripsiProduk.text = det.getString("deskripsi")
                 }
-            }, Response.ErrorListener {
+            }, {
                 Log.e("apiresult", it.message.toString())
             }
         )

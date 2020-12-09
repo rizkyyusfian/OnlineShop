@@ -36,7 +36,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtLoginEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="yusfian@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -52,12 +53,15 @@
         app:hintEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLayoutLoginEmail">
+        app:layout_constraintTop_toBottomOf="@+id/txtLayoutLoginEmail"
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtLoginPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:password="true"
+            android:text="yusfian" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

@@ -22,8 +22,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val webhost = "http://ubaya.prototipe.net/nmp160418112/"
         var q = Volley.newRequestQueue(this)
         var url = webhost + "getitemdetail.php"
-        var stringRequest = StringRequest(
-            Request.Method.POST, url, {
+        var stringRequest = object: StringRequest(Request.Method.POST, url, {
                 Log.d("apiresult", it)
                 var obj = JSONObject(it)
                 if (obj.getString("result") == "OK") {
@@ -40,16 +39,14 @@ class ItemDetailActivity : AppCompatActivity() {
             }, {
                 Log.e("apiresult", it.message.toString())
             }
-        )
-        // TODO: Ditambahi yang untuk ngePOST parameter "id"
-        // {
-//            override fun getParams(): MutableMap<String, Int> {
-//                var params = HashMap<String, Int>()
-//                var id = intent.getIntExtra("ITEM_ID", 0)
-//                params.put("id", id)
-//                return params
-//            }
-//        }
+        ) {
+            override fun getParams(): MutableMap<String, String> {
+                var params = HashMap<String, String>()
+                params.put("id", id.toString())
+
+                return params
+            }
+        }
         q.add(stringRequest)
 
         btnAddCart.setOnClickListener {

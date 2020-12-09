@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/imgItem"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="225dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,58 +36,43 @@
 
             <TextView
                 android:id="@+id/txtNamaItem"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:text="Product"
                 android:textAppearance="@style/header"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgItem" />
 
             <TextView
                 android:id="@+id/txtHarga"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:text="Harga"
                 android:textAppearance="@style/subheader"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtNamaItem" />
 
             <TextView
-                android:id="@+id/txtStok"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtDeskripsi"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:text="Stok"
-                android:textAppearance="@style/subheader"
+                android:layout_marginEnd="24dp"
+                android:text="Description"
+                android:textAppearance="@style/body"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtHarga" />
-
-            <TextView
-                android:id="@+id/txtDeskripsi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:text="Description"
-                android:textAppearance="@style/subheader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaKategori" />
-
-            <TextView
-                android:id="@+id/txtNamaKategori"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="12dp"
-                android:text="Nama Kategori"
-                android:textAppearance="@style/subheader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtStok" />
 
             <Button
                 android:id="@+id/btnAddToCart"
@@ -95,9 +80,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginBottom="12dp"
                 android:text="add to cart"
                 android:textAppearance="@style/subheader"
                 app:icon="@drawable/ic_baseline_shopping_cart_24"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDeskripsi" />
         </androidx.constraintlayout.widget.ConstraintLayout>

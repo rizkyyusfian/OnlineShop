@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.title = "ULALASHOP"
+
         setContentView(R.layout.activity_main)
         fragments.add(HomeFragment())
         fragments.add(CartFragment())

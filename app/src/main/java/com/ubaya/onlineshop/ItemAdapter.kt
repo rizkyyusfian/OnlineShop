@@ -31,7 +31,8 @@ class ItemAdapter(val items:ArrayList<Item>): RecyclerView.Adapter<ItemAdapter.I
         with(holder.v) {
             txtNamaItem.text = items[position].nama
             txtHarga.setText("HARGA: " + items[position].harga.toString())
-            txtDeskripsi.text = items[position].deskripsi
+            txtDeskripsi.text = "DESKRIPSI: " + items[position].deskripsi
+
 
             cardViewDetail.setOnClickListener {
                 var intent = Intent(context, ItemDetailActivity::class.java)

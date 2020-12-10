@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
                 Log.e("apiresult", it.message.toString())
             })
         q.add(stringRequest)
-
+        items.clear() //AGAR ITEM TIDAK LOOPING TERUS
     }
 
     override fun onCreateView(

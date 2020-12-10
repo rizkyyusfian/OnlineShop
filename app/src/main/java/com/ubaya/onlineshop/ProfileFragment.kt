@@ -50,13 +50,12 @@ class ProfileFragment : Fragment() {
 //        txtProfileNama.setText(getArgumentUsername)
 //        txtProfilePassLama.setText((getArgumentId))
 
-//        Log.d("tes1onStart", getArgumentId.toString())
-//        Log.d("tes2onStart", getArgumentUsername.toString())
+        Log.d("tes1onStart", Global.userid)
+        Log.d("tes2onStart", Global.username)
     }
 
     override fun onResume() {
         super.onResume()
-
         btnEditNama.setOnClickListener {
 //            Log.d("tes1onbtn", getArgumentId.toString())
 //            Log.d("tes2onbtn", getArgumentUsername.toString())
@@ -98,6 +97,7 @@ class ProfileFragment : Fragment() {
         val getArgumentUsername:String ?= this.getArguments()?.getString("ITEM_USERNAME");
         Log.d("tes1onStart", getArgumentId.toString())
         Log.d("tes2onStart", getArgumentUsername.toString())
+
         v = inflater.inflate(R.layout.fragment_profile, container, false)
         return  v
     }

@@ -47,7 +47,7 @@ class OrderHistoryFragment : Fragment() {
         var stringRequest = StringRequest(
             Request.Method.POST, url,
             {
-                Log.d("apiresult", it)
+                Log.d("apiresultORDER", it)
                 val obj = JSONObject(it)
                 if(obj.getString("result") == "OK") {
                     val data = obj.getJSONArray("data")
@@ -65,11 +65,11 @@ class OrderHistoryFragment : Fragment() {
                         orders.add(order)
                     }
                     updateList()
-                    Log.d("apiresult", orders.toString())
+                    Log.d("apiresultORDER", orders.toString())
                 }
             },
             {
-                Log.e("apiresult", it.message.toString())
+                Log.e("apiresultORDER", it.message.toString())
             })
         q.add(stringRequest)
     }

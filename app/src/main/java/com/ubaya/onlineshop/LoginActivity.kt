@@ -37,6 +37,9 @@ class LoginActivity : AppCompatActivity() {
                         val data = obj.getJSONArray("data")
                         var det = data.getJSONObject(0)
 
+                        Global.userid = det.getString("id")
+                        Global.username = det.getString("username")
+
 
 
                         //KIRIM DATA LEWAT BUNDLE

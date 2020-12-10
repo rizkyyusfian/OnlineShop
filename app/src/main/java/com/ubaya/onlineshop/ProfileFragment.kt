@@ -1,5 +1,6 @@
 package com.ubaya.onlineshop
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -43,7 +44,6 @@ class ProfileFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         txtProfileNama.setText(Global.username)//UNTUK MENAMPILKAN DATA USER YANG LOGIN DI PROFILE
-        txtProfilePassLama.setText(Global.password)
     }
 
     override fun onResume() {
@@ -104,6 +104,11 @@ class ProfileFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Gagal Ubah Password, Coba Lagi", Toast.LENGTH_LONG).show()
             }
+        }
+
+        btnLogout.setOnClickListener {
+            var intentLogin = Intent(getActivity(), LoginActivity::class.java)
+            startActivity(intentLogin)
         }
     }
 

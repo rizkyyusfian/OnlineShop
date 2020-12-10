@@ -77,6 +77,7 @@ class OrderHistoryFragment : Fragment() {
             }
         }
         q.add(stringRequest)
+        orders.clear() //AGAR ORDER TIDAK LOOPING TERUS
     }
 
     override fun onCreateView(

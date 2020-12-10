@@ -28,6 +28,6 @@ class OrderAdapter(val orders:ArrayList<Order>): RecyclerView.Adapter<OrderAdapt
         holder.v.txtTanggalOrder.text = "TANGGAL ORDER: " + orders[position].tanggalorder
         holder.v.txtTotalItem.setText("TOTAL ITEM: " + orders[position].totalitem.toString())
         holder.v.txtQuantity.setText("QTY: " + orders[position].quantity.toString())
-        holder.v.txtSubTotal.setText("SUB TOTAL: " + orders[position].subtotal.toString())
+        holder.v.txtSubTotal.setText("GRAND TOTAL: " + orders[position].subtotal.toString())
     }
 }

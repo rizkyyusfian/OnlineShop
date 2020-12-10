@@ -43,6 +43,7 @@ class ProfileFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         txtProfileNama.setText(Global.username)//UNTUK MENAMPILKAN DATA USER YANG LOGIN DI PROFILE
+        txtProfilePassLama.setText(Global.password)
     }
 
     override fun onResume() {
@@ -55,11 +56,9 @@ class ProfileFragment : Fragment() {
                     Log.d("apiresultEDIT", it)
                     val obj = JSONObject(it)
                     if (obj.getString("result") == "OK") {
-                        Toast.makeText(context, "Username Berhasil Diubah", Toast.LENGTH_LONG)
-                            .show()
+                        Toast.makeText(context, "Username Berhasil Diubah", Toast.LENGTH_LONG).show()
                     } else if (obj.getString("result") == "ERROR_UPDATE") {
-                        Toast.makeText(context, "Gagal Ubah Username, Coba Lagi", Toast.LENGTH_LONG)
-                            .show()
+                        Toast.makeText(context, "Gagal Ubah Username, Coba Lagi", Toast.LENGTH_LONG).show()
                     }
                 },
                 {
@@ -74,6 +73,37 @@ class ProfileFragment : Fragment() {
                 }
             }
             q.add(stringRequest)
+        }
+
+        btnEditPassword.setOnClickListener {
+            if(txtProfilePass.text.toString() == txtProfielCekPassBaru.text.toString()) {
+                val q = Volley.newRequestQueue(context)
+                val url = "http://ubaya.prototipe.net/nmp160418112/changepassword.php"
+                val stringRequest = object: StringRequest(Request.Method.POST, url,
+                    {
+                        Log.d("apiresultEDITPASS", it)
+                        val obj = JSONObject(it)
+                        if (obj.getString("result") == "OK") {
+                            Toast.makeText(context, "Password Berhasil Berhasil Diubah", Toast.LENGTH_LONG).show()
+                        } else if (obj.getString("result") == "ERROR_UPDATE") {
+                            Toast.makeText(context, "Gagal Ubah Password, Coba Lagi", Toast.LENGTH_LONG).show()
+                        }
+                    },
+                    {
+                        Log.d("apiresultEDITPASS", it.message.toString())
+                    }
+                ) {
+                    override fun getParams(): MutableMap<String, String> {
+                        var params = HashMap<String, String>()
+                        params.put("id", Global.userid)
+                        params.put("password", txtProfilePass.text.toString())
+                        return params
+                    }
+                }
+                q.add(stringRequest)
+            } else {
+                Toast.makeText(context, "Gagal Ubah Password, Coba Lagi", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

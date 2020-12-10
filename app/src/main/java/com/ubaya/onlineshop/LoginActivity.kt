@@ -36,18 +36,9 @@ class LoginActivity : AppCompatActivity() {
                         //GET DETAIL USER
                         val data = obj.getJSONArray("data")
                         var det = data.getJSONObject(0)
-
                         Global.userid = det.getString("id")
                         Global.username = det.getString("username")
-
-
-
-                        //KIRIM DATA LEWAT BUNDLE
-                        val bndl = Bundle()
-                        bndl.putString("ITEM_USERID", det.getString("id"))
-                        bndl.putString("ITEM_USERNAME", det.getString("username"))
-                        val fragP = ProfileFragment()
-                        fragP.setArguments(bndl)
+                        Global.password = det.getString("password")
 
                         //INTENT KE MAIN ACTIVITY
                         var intentLogin = Intent(this, MainActivity::class.java)

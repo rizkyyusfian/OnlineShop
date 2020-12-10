@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,7 @@ class CartFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var v:View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +37,18 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false)
+        v = inflater.inflate(R.layout.fragment_cart, container, false)
+        return v
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val lm: LinearLayoutManager = LinearLayoutManager(activity)
+        var recyclerView = v?.findViewById<RecyclerView>(R.id.cartView)
+        recyclerView?.layoutManager = lm
+        recyclerView?.setHasFixedSize(true)
+        recyclerView?.adapter = CartAdapter(Global.carts)
     }
 
     companion object {

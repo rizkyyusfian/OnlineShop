@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,10 +43,9 @@ class OrderHistoryFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val q = Volley.newRequestQueue(activity)
+        val q = Volley.newRequestQueue(context)
         val url = "http://ubaya.prototipe.net/nmp160418112/getorderhistory.php"
-        var stringRequest = StringRequest(
-            Request.Method.POST, url,
+        var stringRequest = object: StringRequest(Request.Method.POST, url,
             {
                 Log.d("apiresultORDER", it)
                 val obj = JSONObject(it)
@@ -70,7 +70,14 @@ class OrderHistoryFragment : Fragment() {
             },
             {
                 Log.e("apiresultORDER", it.message.toString())
-            })
+            }
+        ) {
+            override fun getParams(): MutableMap<String, String> {
+                var params = HashMap<String, String>()
+                params.put("id", Global.userid)
+                return params
+            }
+        }
         q.add(stringRequest)
     }
 

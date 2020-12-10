@@ -36,29 +36,18 @@ class ProfileFragment : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-
-
-
-//            Log.d("tes1oncreate", getArgumentId.toString())
-//            Log.d("tes2oncreate", getArgumentUsername.toString())
         }
     }
 
 
     override fun onStart() {
         super.onStart()
-//        txtProfileNama.setText(getArgumentUsername)
-//        txtProfilePassLama.setText((getArgumentId))
-
-        Log.d("tes1onStart", Global.userid)
-        Log.d("tes2onStart", Global.username)
+        txtProfileNama.setText(Global.username)//UNTUK MENAMPILKAN DATA USER YANG LOGIN DI PROFILE
     }
 
     override fun onResume() {
         super.onResume()
         btnEditNama.setOnClickListener {
-//            Log.d("tes1onbtn", getArgumentId.toString())
-//            Log.d("tes2onbtn", getArgumentUsername.toString())
             val q = Volley.newRequestQueue(context)
             val url = "http://ubaya.prototipe.net/nmp160418112/changeusername.php"
             val stringRequest = object: StringRequest(Request.Method.POST, url,
@@ -79,8 +68,8 @@ class ProfileFragment : Fragment() {
             ) {
                 override fun getParams(): MutableMap<String, String> {
                     var params = HashMap<String, String>()
-                    params.put("id", txtProfilePass.toString())
-                    params.put("username", txtProfileNama.toString())
+                    params.put("id", Global.userid)
+                    params.put("username", txtProfileNama.text.toString())
                     return params
                 }
             }
@@ -93,11 +82,6 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val getArgumentId:String ?= this.getArguments()?.getString("ITEM_USERID");
-        val getArgumentUsername:String ?= this.getArguments()?.getString("ITEM_USERNAME");
-        Log.d("tes1onStart", getArgumentId.toString())
-        Log.d("tes2onStart", getArgumentUsername.toString())
-
         v = inflater.inflate(R.layout.fragment_profile, container, false)
         return  v
     }

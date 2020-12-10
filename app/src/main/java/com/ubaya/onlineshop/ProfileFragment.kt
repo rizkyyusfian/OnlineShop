@@ -1,10 +1,18 @@
 package com.ubaya.onlineshop
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.fragment_profile.*
+import org.json.JSONObject
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +29,10 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var v:View ?= null
+    var id:Int ?= 0
+    var username:String ?= ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -29,12 +41,57 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        txtProfileNama.setText(username)
+        Log.d("tes1onStart", id.toString())
+        Log.d("tes2onStart", username.toString())
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        btnEditNama.setOnClickListener {
+            Log.d("tes1", id.toString())
+            Log.d("tes2", username.toString())
+
+            val q = Volley.newRequestQueue(context)
+            val url = "http://ubaya.prototipe.net/nmp160418112/changeusername.php"
+            val stringRequest = object: StringRequest(Request.Method.POST, url,
+                {
+                    Log.d("apiresultEDIT", it)
+                    val obj = JSONObject(it)
+                    if(obj.getString("result") == "OK") {
+                        Toast.makeText(context, "Username Berhasil Diubah", Toast.LENGTH_LONG).show()
+                    } else if (obj.getString("result") == "ERROR_UPDATE") {
+                        Toast.makeText(context, "Gagal Ubah Username, Coba Lagi", Toast.LENGTH_LONG).show()
+                    }
+                },
+                {
+                    Log.d("apiresultEDIT", it.message.toString())
+                }
+            ) {
+                override fun getParams(): MutableMap<String, String> {
+                    var params = HashMap<String, String>()
+                    params.put("id", txtProfilePass.toString())
+                    params.put("username", txtProfileNama.toString())
+                    return params
+                }
+            }
+            q.add(stringRequest)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        v = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        id = getActivity()?.getIntent()?.getExtras()?.getInt("ITEM_USERID", 1)
+        username = getActivity()?.getIntent()?.getExtras()?.getString("ITEM_USERNAME", "tes")
+        return  v
     }
 
     companion object {

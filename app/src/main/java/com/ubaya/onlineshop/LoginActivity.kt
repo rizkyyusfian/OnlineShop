@@ -11,7 +11,9 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONObject
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +31,22 @@ class LoginActivity : AppCompatActivity() {
             val stringRequest = object: StringRequest(
                 Request.Method.POST, url,
                 {
-                    Log.d("apiresult", it)
+                    Log.d("apiresultLogin", it)
                     val obj = JSONObject(it)
                     if(obj.getString("result") == "OK") {
+                        //TOAST
                         Toast.makeText(this, "Berhasil Masuk", Toast.LENGTH_LONG).show()
+
+                        //GET DETAIL USER
+                        val data = obj.getJSONArray("data")
+                        var det = data.getJSONObject(0)
+
+                        //INTENT KE MAIN ACTIVITY
                         var intentLogin = Intent(this, MainActivity::class.java)
+                        intent.putExtra("ITEM_USERID", det.getString("id"))
+                        intent.putExtra("ITEM_USERNAME", det.getString("username"))
                         startActivity(intentLogin)
+
                     } else if (obj.getString("result") == "ERROR_EMAILPASS") {
                         Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()
                     } else if (obj.getString("result") == "ERROR_AKUN") {
@@ -44,7 +56,7 @@ class LoginActivity : AppCompatActivity() {
 
                 },
                 {
-                    Log.d("apiresult", it.message.toString())
+                    Log.d("apiresultLogin", it.message.toString())
                 }
             ) {
                 override fun getParams(): MutableMap<String, String> {

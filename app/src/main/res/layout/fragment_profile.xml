@@ -135,7 +135,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
         <Button
-            android:id="@+id/btnUpdateProfile"
+            android:id="@+id/btnEditPassword"
             style="@style/primaryButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
             android:textAppearance="@style/body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnUpdateProfile" />
+            app:layout_constraintTop_toBottomOf="@+id/btnEditPassword" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

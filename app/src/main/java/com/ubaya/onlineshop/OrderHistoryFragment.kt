@@ -43,7 +43,7 @@ class OrderHistoryFragment : Fragment() {
         super.onResume()
 
         val q = Volley.newRequestQueue(activity)
-        val url = "http://ubaya.prototipe.net/nmp160418112/getorder.php"
+        val url = "http://ubaya.prototipe.net/nmp160418112/getorderhistory.php"
         var stringRequest = StringRequest(
             Request.Method.POST, url,
             {

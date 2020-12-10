@@ -2,11 +2,11 @@ package com.ubaya.onlineshop
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -41,11 +41,20 @@ class ProfileFragment : Fragment() {
         }
     }
 
+
     override fun onStart() {
         super.onStart()
-        txtProfileNama.setText(username)
-        Log.d("tes1onStart", id.toString())
-        Log.d("tes2onStart", username.toString())
+//        txtProfileNama.setText(username)
+
+
+        val getArgumentId = arguments!!.getString("ITEM_USERID")
+        val getArgumentUsername = arguments!!.getString("ITEM_USERNAME")
+
+        txtProfileNama.setText(getArgumentUsername)
+        txtProfilePassLama.setText((getArgumentId))
+
+        Log.d("tes1onStart", getArgumentId.toString())
+        Log.d("tes2onStart", getArgumentUsername.toString())
     }
 
     override fun onResume() {
@@ -61,10 +70,12 @@ class ProfileFragment : Fragment() {
                 {
                     Log.d("apiresultEDIT", it)
                     val obj = JSONObject(it)
-                    if(obj.getString("result") == "OK") {
-                        Toast.makeText(context, "Username Berhasil Diubah", Toast.LENGTH_LONG).show()
+                    if (obj.getString("result") == "OK") {
+                        Toast.makeText(context, "Username Berhasil Diubah", Toast.LENGTH_LONG)
+                            .show()
                     } else if (obj.getString("result") == "ERROR_UPDATE") {
-                        Toast.makeText(context, "Gagal Ubah Username, Coba Lagi", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Gagal Ubah Username, Coba Lagi", Toast.LENGTH_LONG)
+                            .show()
                     }
                 },
                 {
@@ -88,9 +99,8 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_profile, container, false)
-
-        id = getActivity()?.getIntent()?.getExtras()?.getInt("ITEM_USERID", 1)
-        username = getActivity()?.getIntent()?.getExtras()?.getString("ITEM_USERNAME", "tes")
+//        id = getActivity()?.getIntent()?.getExtras()?.getInt("ITEM_USERID", 1)
+//        username = getActivity()?.getIntent()?.getExtras()?.getString("ITEM_USERNAME", "tes")
         return  v
     }
 

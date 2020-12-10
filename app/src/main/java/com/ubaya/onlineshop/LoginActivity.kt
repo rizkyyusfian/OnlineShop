@@ -9,8 +9,6 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
@@ -39,18 +37,19 @@ class LoginActivity : AppCompatActivity() {
                         val data = obj.getJSONArray("data")
                         var det = data.getJSONObject(0)
 
-                        //INTENT KE MAIN ACTIVITY
-                        //var intentLogin = Intent(this, MainActivity::class.java)
-                        //intent.putExtra("ITEM_USERID", det.getString("id"))
-                        //intent.putExtra("ITEM_USERNAME", det.getString("username"))
-                        //startActivity(intentLogin)
 
-//                        val bundle = Bundle()
-//                        bundle.putString("edttext", "From Activity")
-//                        // set Fragmentclass Arguments
-//                        // set Fragmentclass Arguments
-//                        val fragobj = Fragmentclass()
-//                        fragobj.setArguments(bundle)
+
+
+                        val bndl = Bundle()
+                        bndl.putString("ITEM_USERID", det.getString("id"))
+                        bndl.putString("ITEM_USERNAME", det.getString("username"))
+
+                        val fragP = ProfileFragment()
+                        fragP.setArguments(bndl)
+
+                        //INTENT KE MAIN ACTIVITY
+                        var intentLogin = Intent(this, MainActivity::class.java)
+                        startActivity(intentLogin)
 
                     } else if (obj.getString("result") == "ERROR_EMAILPASS") {
                         Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()

@@ -39,11 +39,10 @@ class LoginActivity : AppCompatActivity() {
 
 
 
-
+                        //KIRIM DATA LEWAT BUNDLE
                         val bndl = Bundle()
                         bndl.putString("ITEM_USERID", det.getString("id"))
                         bndl.putString("ITEM_USERNAME", det.getString("username"))
-
                         val fragP = ProfileFragment()
                         fragP.setArguments(bndl)
 

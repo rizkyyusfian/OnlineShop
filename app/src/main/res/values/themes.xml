@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.OnlineShop" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.OnlineShop" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryLightColor</item>
@@ -45,5 +45,12 @@
 
     <style name="otherButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="fontFamily">@font/karla</item>
+    </style>
+
+    <!--GANTI COLOR TOOLBAR-->
+    <style name="pagetitleexpanded" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/proza_libre_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/colorBackground</item>
     </style>
 </resources>

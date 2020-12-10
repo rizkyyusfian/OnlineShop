@@ -18,6 +18,10 @@ class ItemDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
 
+//        setSupportActionBar(toolbar)
+        supportActionBar?.title = "ULALA"
+
+
         val id = intent.getIntExtra("ITEM_ID", 0)
         val webhost = "http://ubaya.prototipe.net/nmp160418112/"
         var q = Volley.newRequestQueue(this)

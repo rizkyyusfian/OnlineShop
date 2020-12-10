@@ -30,40 +30,36 @@ class ProfileFragment : Fragment() {
     private var param2: String? = null
 
     var v:View ?= null
-    var id:Int ?= 0
-    var username:String ?= ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
+
+//            Log.d("tes1oncreate", getArgumentId.toString())
+//            Log.d("tes2oncreate", getArgumentUsername.toString())
         }
     }
 
 
     override fun onStart() {
         super.onStart()
-//        txtProfileNama.setText(username)
+//        txtProfileNama.setText(getArgumentUsername)
+//        txtProfilePassLama.setText((getArgumentId))
 
-
-        val getArgumentId = arguments!!.getString("ITEM_USERID")
-        val getArgumentUsername = arguments!!.getString("ITEM_USERNAME")
-
-        txtProfileNama.setText(getArgumentUsername)
-        txtProfilePassLama.setText((getArgumentId))
-
-        Log.d("tes1onStart", getArgumentId.toString())
-        Log.d("tes2onStart", getArgumentUsername.toString())
+//        Log.d("tes1onStart", getArgumentId.toString())
+//        Log.d("tes2onStart", getArgumentUsername.toString())
     }
 
     override fun onResume() {
         super.onResume()
 
         btnEditNama.setOnClickListener {
-            Log.d("tes1", id.toString())
-            Log.d("tes2", username.toString())
-
+//            Log.d("tes1onbtn", getArgumentId.toString())
+//            Log.d("tes2onbtn", getArgumentUsername.toString())
             val q = Volley.newRequestQueue(context)
             val url = "http://ubaya.prototipe.net/nmp160418112/changeusername.php"
             val stringRequest = object: StringRequest(Request.Method.POST, url,
@@ -98,9 +94,11 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val getArgumentId:String ?= this.getArguments()?.getString("ITEM_USERID");
+        val getArgumentUsername:String ?= this.getArguments()?.getString("ITEM_USERNAME");
+        Log.d("tes1onStart", getArgumentId.toString())
+        Log.d("tes2onStart", getArgumentUsername.toString())
         v = inflater.inflate(R.layout.fragment_profile, container, false)
-//        id = getActivity()?.getIntent()?.getExtras()?.getInt("ITEM_USERID", 1)
-//        username = getActivity()?.getIntent()?.getExtras()?.getString("ITEM_USERNAME", "tes")
         return  v
     }
 

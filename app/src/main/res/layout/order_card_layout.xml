@@ -39,6 +39,7 @@
                 android:layout_marginTop="24dp"
                 android:text="ID ITEM"
                 android:textAppearance="@style/body"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgOrder" />
 
@@ -50,6 +51,7 @@
                 android:layout_marginTop="12dp"
                 android:text="ID USER"
                 android:textAppearance="@style/body"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtIdItem" />
 
@@ -61,6 +63,7 @@
                 android:layout_marginTop="12dp"
                 android:text="TANGGAL ORDER"
                 android:textAppearance="@style/body"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtIdUser" />
 
@@ -72,6 +75,7 @@
                 android:layout_marginTop="12dp"
                 android:text="QUANTITY"
                 android:textAppearance="@style/body"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTanggalOrder" />
 
@@ -83,6 +87,7 @@
                 android:layout_marginTop="12dp"
                 android:text="SUB TOTAL"
                 android:textAppearance="@style/body"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtQuantity" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -98,6 +98,7 @@
         android:layout_marginTop="72dp"
         android:text="SIGN UP"
         android:textAppearance="@style/header"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -121,6 +122,7 @@
         android:layout_marginBottom="32dp"
         android:text="MASUK DISINI!"
         android:textAppearance="@style/body"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,6 +137,7 @@
         android:layout_marginBottom="32dp"
         android:text="Sudah Punya Akun ?"
         android:textAppearance="@style/body"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.155"

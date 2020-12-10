@@ -45,12 +45,12 @@ class LoginActivity : AppCompatActivity() {
                         //intent.putExtra("ITEM_USERNAME", det.getString("username"))
                         //startActivity(intentLogin)
 
-                        val bundle = Bundle()
-                        bundle.putString("edttext", "From Activity")
-                        // set Fragmentclass Arguments
-                        // set Fragmentclass Arguments
-                        val fragobj = Fragmentclass()
-                        fragobj.setArguments(bundle)
+//                        val bundle = Bundle()
+//                        bundle.putString("edttext", "From Activity")
+//                        // set Fragmentclass Arguments
+//                        // set Fragmentclass Arguments
+//                        val fragobj = Fragmentclass()
+//                        fragobj.setArguments(bundle)
 
                     } else if (obj.getString("result") == "ERROR_EMAILPASS") {
                         Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()

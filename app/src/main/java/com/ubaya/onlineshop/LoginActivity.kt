@@ -1,19 +1,17 @@
 package com.ubaya.onlineshop
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import org.json.JSONObject
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
                 {
                     Log.d("apiresultLogin", it)
                     val obj = JSONObject(it)
-                    if(obj.getString("result") == "OK") {
+                    if (obj.getString("result") == "OK") {
                         //TOAST
                         Toast.makeText(this, "Berhasil Masuk", Toast.LENGTH_LONG).show()
 
@@ -42,10 +40,17 @@ class LoginActivity : AppCompatActivity() {
                         var det = data.getJSONObject(0)
 
                         //INTENT KE MAIN ACTIVITY
-                        var intentLogin = Intent(this, MainActivity::class.java)
-                        intent.putExtra("ITEM_USERID", det.getString("id"))
-                        intent.putExtra("ITEM_USERNAME", det.getString("username"))
-                        startActivity(intentLogin)
+                        //var intentLogin = Intent(this, MainActivity::class.java)
+                        //intent.putExtra("ITEM_USERID", det.getString("id"))
+                        //intent.putExtra("ITEM_USERNAME", det.getString("username"))
+                        //startActivity(intentLogin)
+
+                        val bundle = Bundle()
+                        bundle.putString("edttext", "From Activity")
+                        // set Fragmentclass Arguments
+                        // set Fragmentclass Arguments
+                        val fragobj = Fragmentclass()
+                        fragobj.setArguments(bundle)
 
                     } else if (obj.getString("result") == "ERROR_EMAILPASS") {
                         Toast.makeText(this, "Email/Password Salah", Toast.LENGTH_LONG).show()

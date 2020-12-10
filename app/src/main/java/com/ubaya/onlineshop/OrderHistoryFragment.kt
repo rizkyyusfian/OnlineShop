@@ -54,8 +54,9 @@ class OrderHistoryFragment : Fragment() {
                     for(i in 0 until data.length()) {
                         val playObj = data.getJSONObject(i)
                         val order = Order(
-                            playObj.getInt("items_iditem"),
-                            playObj.getInt("users_iduser"),
+                            playObj.getInt("idorderhistory"),
+                            playObj.getInt("iditemorder"),
+                            playObj.getInt("iduserorder"),
                             playObj.getString("tanggalorder"),
                             playObj.getInt("quantity"),
                             playObj.getInt("subtotal"),

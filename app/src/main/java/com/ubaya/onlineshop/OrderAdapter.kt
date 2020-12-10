@@ -27,8 +27,9 @@ class OrderAdapter(val orders:ArrayList<Order>): RecyclerView.Adapter<OrderAdapt
         val url = orders[position].gambarorder //GAMBAR
         Picasso.get().load(url).into(holder.v.imgOrder) //GAMBAR
 
-        holder.v.txtIdItem.setText("ID ITEM: " + orders[position].items_iditem.toString())
-        holder.v.txtIdUser.setText("ID USER: " + orders[position].users_iduser.toString())
+        holder.v.txtIdOrder.setText("ID ORDER: " + orders[position].idorderhistory.toString())
+        holder.v.txtIdItem.setText("ID ITEM: " + orders[position].iditemorder.toString())
+        holder.v.txtIdUser.setText("ID USER: " + orders[position].iduserorder.toString())
         holder.v.txtTanggalOrder.text = "TANGGAL ORDER: " + orders[position].tanggalorder
         holder.v.txtQuantity.setText("QTY: " + orders[position].quantity.toString())
         holder.v.txtSubTotal.setText("SUB TOTAL: " + orders[position].subtotal.toString())

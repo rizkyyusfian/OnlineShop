@@ -14,13 +14,19 @@ import kotlinx.android.synthetic.main.product_card_layout.view.*
 import org.json.JSONObject
 
 class ItemDetailActivity : AppCompatActivity() {
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed();
+        return true;
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_detail)
 
-//        setSupportActionBar(toolbar)
-        supportActionBar?.title = "ULALA"
-
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = Global.itemname
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val id = intent.getIntExtra("ITEM_ID", 0)
         val webhost = "http://ubaya.prototipe.net/nmp160418112/"
@@ -39,6 +45,8 @@ class ItemDetailActivity : AppCompatActivity() {
                     txtHargaProduk.text = "Rp " + det.getInt("harga")
                     txtStok.text = det.getInt("stok").toString()
                     txtDeskripsiProduk.text = det.getString("deskripsi")
+
+                    Global.itemname = det.getString("nama")
                 }
             }, {
                 Log.e("apiresult", it.message.toString())

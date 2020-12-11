@@ -5,4 +5,6 @@ object Global {
     var username = ""
     var password = ""
     var carts: ArrayList<Cart> = ArrayList<Cart>()
+
+    var itemname = ""
 }

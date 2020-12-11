@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity() {
                 val url = "http://ubaya.prototipe.net/nmp160418112/signup.php"
                 val stringRequest = object: StringRequest(Request.Method.POST, url,
                     {
-                        Log.d("apiresult", it)
+                        Log.d("apiresultREG", it)
                         val obj = JSONObject(it)
                         if(obj.getString("result") == "OK") {
                             Toast.makeText(this, "Akun Berhasil Didaftarkan", Toast.LENGTH_LONG).show()
@@ -42,7 +42,7 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     },
                     {
-                        Log.d("apiresult", it.message.toString())
+                        Log.d("apiresultREG", it.message.toString())
                     }
                 ) {
                     override fun getParams(): MutableMap<String, String> {

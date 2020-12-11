@@ -39,6 +39,8 @@ class SignUpActivity : AppCompatActivity() {
                             Toast.makeText(this, "Email Sudah Pernah Didaftarkan", Toast.LENGTH_LONG).show()
                         } else if (obj.getString("result") == "ERROR_INSERT") {
                             Toast.makeText(this, "Gagal Daftar, Coba Lagi", Toast.LENGTH_LONG).show()
+                        } else if (obj.getString("result") == "ERROR_FORM") {
+                            Toast.makeText(this, "Form Tidak Boleh Ada yang Kosong", Toast.LENGTH_LONG).show()
                         }
                     },
                     {

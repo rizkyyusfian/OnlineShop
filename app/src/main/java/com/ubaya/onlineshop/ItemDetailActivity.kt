@@ -25,7 +25,7 @@ class ItemDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_item_detail)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.title = Global.itemname
+        supportActionBar?.title = "ULALA APP"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val id = intent.getIntExtra("ITEM_ID", 0)
@@ -45,8 +45,6 @@ class ItemDetailActivity : AppCompatActivity() {
                     txtHargaProduk.text = "Rp " + det.getInt("harga")
                     txtStok.text = det.getInt("stok").toString()
                     txtDeskripsiProduk.text = det.getString("deskripsi")
-
-                    Global.itemname = det.getString("nama")
                 }
             }, {
                 Log.e("apiresult", it.message.toString())
